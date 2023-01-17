@@ -86,6 +86,7 @@ public class currencyFragment extends Fragment
         btn_cur = view.findViewById(R.id.btn_cur);
         btn_update = view.findViewById(R.id.btn_update);
 
+
         btn_cur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
