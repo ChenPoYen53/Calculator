@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/calculator"
+        android:title="@string/calculator"
+        android:icon="@drawable/ic_calculate"/>
+    <item
+        android:id="@+id/currency"
+        android:title="@string/currency"
+        android:icon="@drawable/ic_currency"/>
+    <item
+        android:id="@+id/unit"
+        android:title="@string/unit"
+        android:icon="@drawable/unit"/>
+</menu>
