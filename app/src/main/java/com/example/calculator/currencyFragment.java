@@ -1,33 +1,25 @@
 package com.example.calculator;
 
+import static com.example.calculator.key.key.KEY_FridayFactory;
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.calculator.Database.MainData;
 import com.example.calculator.Database.RoomDB;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,13 +29,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-
 
 public class currencyFragment extends Fragment
 {
     private static final String TAG = "currencyFragment";
+    private static final String api_key = "api-key";
     private List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
     private List<HashMap<String, String>> list1 = new ArrayList<HashMap<String, String>>();
     private List<HashMap<String, String>> list2 = new ArrayList<HashMap<String, String>>();
@@ -118,7 +108,7 @@ public class currencyFragment extends Fragment
                 URL URL = new URL(url);
                 HttpURLConnection connection = (HttpURLConnection) URL.openConnection();
                 connection.setRequestMethod("GET");
-                connection.setRequestProperty("api-key","7784e6b4fc7daa62a11a4f63879d31b8");
+                connection.setRequestProperty(api_key,KEY_FridayFactory);
                 InputStream is = connection.getInputStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(is));
                 String line = in.readLine();

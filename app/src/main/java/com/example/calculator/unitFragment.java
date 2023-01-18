@@ -1,5 +1,7 @@
 package com.example.calculator;
 
+import static com.example.calculator.key.key.KEY_ZYLA_Unit;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +46,8 @@ import okhttp3.Response;
 public class unitFragment extends Fragment
 {
     private static final String TAG = "unitFragment";
+    private static final String Authorization = "Authorization";
+    private static final String Bearer_ = "Bearer ";
     private Spinner spType,spMeasure,spMeasure2;
     private String[][] array = new String[][]{{"g-force","m/s2"},{"rad", "deg", "grad", "arcmin", "arcsec"},{"VA", "mVA", "kVA", "MVA", "GVA"},{"nm2", "μm2", "mm2", "cm2", "m2", "ha", "km2", "in2", "yd2", "ft2", "ac", "mi2"},
             {"c", "mC", "μC", "nC", "pC"},{"A", "mA", "kA"},{"b", "Kb", "Mb", "Gb", "Tb", "B", "KB", "MB", "GB", "TB"},{"ea","dz"},{"Wh","mWh","kWh","MWh","GWh","J","kJ"},{"N","kN","lbf"},{"mHz","Hz","kHz","MHz","GHz","THz","rpm","deg/s","rad/s"},
@@ -117,14 +121,13 @@ public class unitFragment extends Fragment
         String from = spMeasure.getSelectedItem().toString();
         String to = spMeasure2.getSelectedItem().toString();
         String require = spType.getSelectedItem().toString();
-        String apiKey = "581|eihPFjrEYmHTIkj7JFz09IWqUiH8cWDgbAtwYPmn";
         final String url = "https://zylalabs.com/api/189/measurement+unit+conversion+api/202/unit+converter?value=" + value + "&from=" + from + "&to=" + to + "&measure=" + require;
         new Thread(() -> {
             try {
                 URL URL = new URL(url);
                 HttpURLConnection connection = (HttpURLConnection) URL.openConnection();
                 connection.setRequestMethod("GET");
-                connection.setRequestProperty("Authorization","Bearer "+apiKey);
+                connection.setRequestProperty(Authorization,Bearer_+KEY_ZYLA_Unit);
                 connection.connect();
                 InputStream is = connection.getInputStream();
                 BufferedReader in = new BufferedReader(new InputStreamReader(is));
